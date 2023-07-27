@@ -188,7 +188,7 @@ module OmniAuth
         opts.merge!(options.extra_authorize_params) unless options.extra_authorize_params.empty?
 
         options.allow_authorize_params.each do |key|
-          opts[key] = request.params[key.to_s] unless opts.key?(key)
+          opts[key] = request.params[key.to_s] if opts[key].nil?
         end
 
         if options.pkce
